@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "checked": true,
+      "item": "Oppo"
+    },
+    {
+      "id": 3,
+      "checked": false,
+      "item": "OnePlus"
+    },
+    {
+      "id": 4,
+      "checked": true,
+      "item": "OnePlus"
+    }
+  ]
+}

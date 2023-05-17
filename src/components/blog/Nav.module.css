@@ -1,0 +1,22 @@
+.navStyle {
+  width: 71%;
+  margin-left: 75px;
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  align-items: flex-start;
+  gap: 30px;
+  cursor: pointer;
+}
+
+.link {
+  text-decoration: none !important;
+}
+
+/* .navStyle a {
+  text-decoration: none;
+} */
+
+.navStyle a.active {
+  color: gray;
+}
