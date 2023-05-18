@@ -11,7 +11,7 @@ function Post({ posts, isLoading }) {
         borderBottom: "1px solid gray",
       }}
     >
-      {isLoading || posts.length ? (
+      {!isLoading || posts.length > 0 ? (
         posts.map((post) => (
           <Link
             style={{ color: "black", textDecoration: "none" }}

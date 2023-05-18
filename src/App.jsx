@@ -24,39 +24,39 @@ function App() {
   const [postBody, setPostBody] = useState("");
   const [search, setSearch] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
-    const fatchItems = () => {
-      setIsLoading(true);
+    setIsLoading(true);
+    const fatchItems = (API_URL) => {
       fetch(API_URL)
         .then((res) => res.json())
-        .then((res) => setPosts(res))
-        .catch((err) => console.log(err))
-        .finally(() => setIsLoading(false));
+        .then((data) => {
+          setPosts(data);
+          setIsLoading(false);
+        })
+        .catch((err) => console.log(err));
     };
-    fatchItems();
+    fatchItems(API_URL);
   }, []);
 
-  console.log(posts);
+  // filter post
   let filterPost = [];
-  if (posts.length > 0) {
-    filterPost = posts.filter((post) =>
-      post.title.toLowercase.includes(search)
-    );
+  if (posts?.length > 0) {
+    filterPost = posts.filter((post) => {
+      return post.title?.toLowerCase()?.includes(search?.toLowerCase());
+    });
   }
 
   const handleDelete = (id) => {
     const postList = posts.filter((post) => post.id !== id);
     setPosts(postList);
-    navigate(-1);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
     const dateTime = format(new Date(), "MMMM dd, yyyy pp");
-    const newPost = { id, title: postTitle, dateTime, body: postBody };
+    const newPost = { id: "", title: postTitle, dateTime, body: postBody };
 
     const postOptions = {
       method: "POST",
